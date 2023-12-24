@@ -30,8 +30,16 @@
 import /init.recovery.device.rc
 import /init.recovery.qcom_decrypt.rc
 
+service detect-dynamic-partitions /system/bin/detect-dynamic-partitions.sh
+    user root
+    group root
+    disabled
+    oneshot
+    seclabel u:r:recovery:s0
+
 on init
     exec u:r:recovery:s0 -- /system/bin/resetprop ro.boot.verifiedbootstate orange
+    start detect-dynamic-partitions
 
 on fs
     wait /dev/block/platform/soc/${ro.boot.bootdevice}
