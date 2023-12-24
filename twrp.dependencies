@@ -1,8 +1,8 @@
 [
     {
         "remote"        :   "github",
-        "repository"    :   "CraftRom/recovery_kernel_xiaomi_onclite",
+        "repository"    :   "afterallafk/kernel_xiaomi_onclite-dynamic",
         "target_path"   :   "kernel/xiaomi/onclite",
-        "revision"      :   "fox_12.1"
+        "revision"      :   "dynamic"
     }
 ]
