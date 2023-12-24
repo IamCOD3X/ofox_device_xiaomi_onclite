@@ -5,14 +5,15 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
+# Release Name
 PRODUCT_RELEASE_NAME := onclite
 
 # Inherit from onclite device
 $(call inherit-product, device/xiaomi/onclite/device.mk)
 
 # Device identifier. This must come after all inclusions
-PRODUCT_DEVICE := $(PRODUCT_RELEASE_NAME)
-PRODUCT_NAME := twrp_$(PRODUCT_RELEASE_NAME)
+PRODUCT_DEVICE := onclite
+PRODUCT_NAME := omni_onclite
 BOARD_VENDOR := Xiaomi
 PRODUCT_BRAND := Xiaomi
 PRODUCT_MODEL := Redmi 7
