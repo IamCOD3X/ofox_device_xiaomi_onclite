@@ -18,48 +18,15 @@
 #  Please maintain this if you use this script or any part of it
 #
 
-FDEVICE="onclite"
-
-fox_get_target_device() {
-local chkdev=$(echo "$BASH_SOURCE" | grep $FDEVICE)
-   if [ -n "$chkdev" ]; then
-      FOX_BUILD_DEVICE="$FDEVICE"
-   else
-      chkdev=$(set | grep BASH_ARGV | grep $FDEVICE)
-      [ -n "$chkdev" ] && FOX_BUILD_DEVICE="$FDEVICE"
-   fi
-}
-
-if [ -z "$1" -a -z "$FOX_BUILD_DEVICE" ]; then
-   fox_get_target_device
-fi
-
-fox_get_target_device() {
-local chkdev=$(echo "$BASH_SOURCE" | grep $FDEVICE)
-   if [ -n "$chkdev" ]; then
-      FOX_BUILD_DEVICE="$FDEVICE"
-   else
-      chkdev=$(set | grep BASH_ARGV | grep $FDEVICE)
-      [ -n "$chkdev" ] && FOX_BUILD_DEVICE="$FDEVICE"
-   fi
-}
-
-if [ -z "$1" -a -z "$FOX_BUILD_DEVICE" ]; then
-   fox_get_target_device
-fi
-
-if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
 	export LC_ALL="C"
 	export ALLOW_MISSING_DEPENDENCIES=true
-	export OF_TARGET_DEVICES=onclite
+	export FOX_BUILD_DEVICE=onclite
 	export TARGET_DEVICE_ALT=onclite,onc
 
 
 	# Device Tree Path | Include Path
 	export DEVICE_PATH=device/xiaomi/onclite
 	export INCLUDE_PATH=$DEVICE_PATH/include
-
-	export OF_MAINTAINER_AVATAR=$INCLUDE_PATH/melles1991.png
 
 	#Language
 	export TW_DEFAULT_LANGUAGE="en"
@@ -79,6 +46,7 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
 	export FOX_USE_SED_BINARY=1
 	export FOX_USE_XZ_UTILS=1
 	export FOX_REPLACE_BUSYBOX_PS=1
+	export FOX_VARIANT="A12"
 
 	export FOX_BUGGED_AOSP_ARB_WORKAROUND="1616300800"; # Sun 21 Mar 04:26:40 GMT 2021
 	export OF_USE_SYSTEM_FINGERPRINT=1
@@ -88,7 +56,7 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
 	export FOX_DELETE_AROMAFM=1
 
 	# LZMA compression - this is needed!
-	export FOX_USE_LZMA_COMPRESSION=1
+	export OF_USE_LZMA_COMPRESSION=1
 
 	#Magiskboot
 	export OF_USE_MAGISKBOOT=1
@@ -128,5 +96,3 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
   	   export | grep "TW_" >> $FOX_BUILD_LOG_FILE
   	   export | grep "TARGET_" >> $FOX_BUILD_LOG_FILE
  	fi
-  	
-fi
