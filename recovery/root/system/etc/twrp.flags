@@ -11,7 +11,10 @@
 /dtbo           emmc    /dev/block/bootdevice/by-name/dtbo                      flags=display="DTBO";backup=1;flashimg=1
 
 # Data
-/storage        auto   	/data/media/0                  		     		        flags=display="Internal Storage";usermrf;backup=1;fsflags="bind";removable
+/storage        auto	/data/media/0				                flags=display="Internal Storage";usermrf;backup=1;fsflags="bind";removable
+
+# Metadata
+/metadata       ext4    /dev/block/bootdevice/by-name/logdump                   flags=display="Metadata"
 
 # Modem
 /firmware       vfat    /dev/block/bootdevice/by-name/modem                     flags=display="Firmware";fsflags="ro";mounttodecrypt;backup=0

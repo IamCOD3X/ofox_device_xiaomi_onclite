@@ -168,6 +168,7 @@ TW_EXTRA_LANGUAGES := true
 
 # TWRP - Crypto
 TW_INCLUDE_CRYPTO := true
+BOARD_USES_METADATA_PARTITION := true
 
 # Platform security
 PLATFORM_VERSION := 99.87.36
